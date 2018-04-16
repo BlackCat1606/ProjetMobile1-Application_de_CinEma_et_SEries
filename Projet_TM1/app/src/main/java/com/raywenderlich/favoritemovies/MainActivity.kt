@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Get the list of movies from the JSON file
-        val movies = MovieHelper.getMoviesFromJson()
+        val movies = arrayListOf("Acceuil","Cinéma","Série","Personne","Commentaires","Fan")
 
         viewPager = findViewById(R.id.viewPager)
 

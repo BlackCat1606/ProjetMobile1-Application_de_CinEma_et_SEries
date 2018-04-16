@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import java.util.*
 
 
@@ -36,7 +37,7 @@ class MyRecyclerViewAdapter// data is passed into the constructor
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val color:Int = mViewColors.get(position) as Int
         val animal = mAnimals.get(position) as String
-        holder.myView.setBackgroundColor(color)
+        holder.myView.setImageResource(color)
         holder.myTextView.setText(animal)
     }
 
@@ -47,7 +48,7 @@ class MyRecyclerViewAdapter// data is passed into the constructor
 
     // stores and recycles views as they are scrolled off screen
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        var myView: View
+        var myView: ImageView
         var myTextView: TextView
 
         init {

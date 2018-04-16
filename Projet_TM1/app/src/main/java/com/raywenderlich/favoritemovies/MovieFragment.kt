@@ -57,11 +57,11 @@ class MovieFragment : Fragment() {
 
     // data to populate the RecyclerView with
     val viewColoers = ArrayList<Int>()
-    viewColoers.add(Color.BLACK)
-    viewColoers.add(Color.YELLOW)
-    viewColoers.add(Color.MAGENTA)
-    viewColoers.add(Color.RED)
-    viewColoers.add(Color.BLACK)
+    viewColoers.add(R.drawable.dawn)
+    viewColoers.add(R.drawable.despicable)
+    viewColoers.add(R.drawable.droid_runner)
+    viewColoers.add(R.drawable.lego)
+    viewColoers.add(R.drawable.wonder_droid)
 
     val animalNames = ArrayList<String>()
     animalNames.add("Horse")
@@ -83,7 +83,7 @@ class MovieFragment : Fragment() {
 
     // Retrieve and display the movie data from the Bundle
     val args = arguments
-    titleTextView.text = args.getString(MovieHelper.KEY_TITLE)
+    titleTextView.text = args.getString("title")
     //ratingTextView.text = String.format("%d/10", args.getInt(MovieHelper.KEY_RATING))
     //overviewTextView.text = args.getString(MovieHelper.KEY_OVERVIEW)
 
@@ -102,7 +102,7 @@ class MovieFragment : Fragment() {
 
       // Store the movie data in a Bundle object
       val args = Bundle()
-      args.putString(MovieHelper.KEY_TITLE, movie)
+      args.putString("title", movie)
       //args.putInt(MovieHelper.KEY_RATING, movie.rating)
       //args.putString(MovieHelper.KEY_POSTER_URI, movie.posterUri)
       //args.putString(MovieHelper.KEY_OVERVIEW, movie.overview)
