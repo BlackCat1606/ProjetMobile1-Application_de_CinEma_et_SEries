@@ -30,6 +30,7 @@
 
 package com.raywenderlich.favoritemovies
 
+import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -42,75 +43,73 @@ import android.widget.TextView
 
 import com.squareup.picasso.Picasso
 import android.support.v7.widget.RecyclerView
-
+import android.widget.ListView
 
 
 class MovieFragment : Fragment() {
-  private var adapter: MyRecyclerViewAdapter? = null
+    var itemname = arrayOf("Salle01", "Salle02", "Salle03", "Salle04", "Salle05", "Salle06")
+    private var adapter: MyRecyclerViewAdapter? = null
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
-  Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
+    Bundle?): View? {
 
-    // Creates the view controlled by the fragment
-    val view = inflater.inflate(R.layout.fragment_movie, container, false)
-    val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
+        // Creates the view controlled by the fragment
+        val view = inflater.inflate(R.layout.fragment_movie, container, false)
+        val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
 
-    // data to populate the RecyclerView with
-    val viewColoers = ArrayList<Int>()
-    viewColoers.add(R.drawable.dawn)
-    viewColoers.add(R.drawable.despicable)
-    viewColoers.add(R.drawable.droid_runner)
-    viewColoers.add(R.drawable.lego)
-    viewColoers.add(R.drawable.wonder_droid)
-    val animalNames = ArrayList<String>()
-    animalNames.add("Horse")
-    animalNames.add("Cow")
-    animalNames.add("Camel")
-    animalNames.add("Sheep")
-    animalNames.add("Goat")
-    // set up the RecyclerView
-    val recyclerView:RecyclerView = view.findViewById(R.id.rvAnimals)
-    val horizontalLayoutManagaer = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-    recyclerView.layoutManager = horizontalLayoutManagaer
-    adapter = MyRecyclerViewAdapter(this.context, viewColoers, animalNames)
-    //adapter!!.setClickListener()
-    recyclerView.adapter = adapter
+        // data to populate the RecyclerView with
+        val viewColoers = ArrayList<Int>()
+        viewColoers.add(R.drawable.dawn)
+        viewColoers.add(R.drawable.despicable)
+        viewColoers.add(R.drawable.droid_runner)
+        viewColoers.add(R.drawable.lego)
+        viewColoers.add(R.drawable.wonder_droid)
+        val animalNames = ArrayList<String>()
+        animalNames.add("Horse")
+        animalNames.add("Cow")
+        animalNames.add("Camel")
+        animalNames.add("Sheep")
+        animalNames.add("Goat")
+        // set up the RecyclerView
+        val recyclerView: RecyclerView = view.findViewById(R.id.rvAnimals)
+        val horizontalLayoutManagaer = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = horizontalLayoutManagaer
+        adapter = MyRecyclerViewAdapter(this.context, viewColoers, animalNames)
+        recyclerView.adapter = adapter
 
-    /*val ratingTextView = view.findViewById<TextView>(R.id.ratingTextView)
-    val posterImageView = view.findViewById<ImageView>(R.id.posterImageView)
-    val overviewTextView = view.findViewById<TextView>(R.id.overviewTextView)*/
+        val args = arguments
+        titleTextView.text = args.getString("title")
 
-    // Retrieve and display the movie data from the Bundle
-    val args = arguments
-    titleTextView.text = args.getString("title")
-    //ratingTextView.text = String.format("%d/10", args.getInt(MovieHelper.KEY_RATING))
-    //overviewTextView.text = args.getString(MovieHelper.KEY_OVERVIEW)
 
-    // Download the image and display it using Picasso
-    /*Picasso.with(activity)
-        .load(resources.getIdentifier(args.getString(MovieHelper.KEY_POSTER_URI), "drawable", activity.packageName))
-        .into(posterImageView)*/
+        //partie liste des salles
+        for (i: Int in 0..itemname.size-1) {
+            val adapter = ListeSalleAdapter(context as Activity, itemname)
+            var list: ListView = view.findViewById<ListView>(R.id.list)
+            list.adapter = adapter
+            //************
+        }
 
-    return view
-  }
 
-  companion object {
-
-    // Method for creating new instances of the fragment
-    fun newInstance(movie: String): MovieFragment {
-
-      // Store the movie data in a Bundle object
-      val args = Bundle()
-      args.putString("title", movie)
-      //args.putInt(MovieHelper.KEY_RATING, movie.rating)
-      //args.putString(MovieHelper.KEY_POSTER_URI, movie.posterUri)
-      //args.putString(MovieHelper.KEY_OVERVIEW, movie.overview)
-
-      // Create a new MovieFragment and set the Bundle as the arguments
-      // to be retrieved and displayed when the view is created
-      val fragment = MovieFragment()
-      fragment.arguments = args
-      return fragment
+        return view
     }
-  }
+
+    companion object {
+
+        // Method for creating new instances of the fragment
+        fun newInstance(movie: String): MovieFragment {
+
+            // Store the movie data in a Bundle object
+            val args = Bundle()
+            args.putString("title", movie)
+            //args.putInt(MovieHelper.KEY_RATING, movie.rating)
+            //args.putString(MovieHelper.KEY_POSTER_URI, movie.posterUri)
+            //args.putString(MovieHelper.KEY_OVERVIEW, movie.overview)
+
+            // Create a new MovieFragment and set the Bundle as the arguments
+            // to be retrieved and displayed when the view is created
+            val fragment = MovieFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 }

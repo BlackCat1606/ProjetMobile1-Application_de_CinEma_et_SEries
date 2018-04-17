@@ -12,26 +12,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [AcceuilFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [AcceuilFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class AcceuilFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
     Bundle?): View? {
-
         // Creates the view controlled by the fragment
         val view = inflater.inflate(R.layout.fragment_acceuil, container, false)
-
-
-
-
         val args = arguments
 
         return view
