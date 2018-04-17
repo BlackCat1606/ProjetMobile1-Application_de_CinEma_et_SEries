@@ -42,7 +42,13 @@ class MoviesPagerAdapter(fragmentManager: FragmentManager, private val movies: A
 
   // 2
   override fun getItem(position: Int): Fragment {
-    return MovieFragment.newInstance(movies[position /*% movies.size*/])
+    if(position == 1) {
+      return MovieFragment.newInstance(movies[position /*% movies.size*/])
+    }
+    else
+    {
+      return AcceuilFragment.newInstance(movies[position /*% movies.size*/])
+    }
   }
 
   // 3
