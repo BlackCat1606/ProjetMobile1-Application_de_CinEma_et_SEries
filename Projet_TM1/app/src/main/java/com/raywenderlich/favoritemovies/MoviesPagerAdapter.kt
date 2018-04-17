@@ -30,16 +30,18 @@
 
 package com.raywenderlich.favoritemovies
 
+import android.graphics.Color
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.view.LayoutInflater
+import android.view.View
 
 //private const val MAX_VALUE = 200
 
 // 1
 class MoviesPagerAdapter(fragmentManager: FragmentManager, private val movies: ArrayList<String>) :
     FragmentStatePagerAdapter(fragmentManager) {
-
   // 2
   override fun getItem(position: Int): Fragment {
     if(position == 1) {

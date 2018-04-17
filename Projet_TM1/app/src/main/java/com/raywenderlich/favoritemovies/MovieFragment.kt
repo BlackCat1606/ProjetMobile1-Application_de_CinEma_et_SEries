@@ -30,6 +30,7 @@
 
 package com.raywenderlich.favoritemovies
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
@@ -44,51 +45,64 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import android.support.v7.widget.RecyclerView
 import android.widget.ListView
+import kotlinx.android.synthetic.*
 
 
 class MovieFragment : Fragment() {
     var itemname = arrayOf("Salle01", "Salle02", "Salle03", "Salle04", "Salle05", "Salle06")
     private var adapter: MyRecyclerViewAdapter? = null
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
     Bundle?): View? {
 
         // Creates the view controlled by the fragment
         val view = inflater.inflate(R.layout.fragment_movie, container, false)
-        val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
+        //val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
 
         // data to populate the RecyclerView with
-        val viewColoers = ArrayList<Int>()
-        viewColoers.add(R.drawable.dawn)
-        viewColoers.add(R.drawable.despicable)
-        viewColoers.add(R.drawable.droid_runner)
-        viewColoers.add(R.drawable.lego)
-        viewColoers.add(R.drawable.wonder_droid)
-        val animalNames = ArrayList<String>()
-        animalNames.add("Horse")
-        animalNames.add("Cow")
-        animalNames.add("Camel")
-        animalNames.add("Sheep")
-        animalNames.add("Goat")
+        val coverFilm = ArrayList<Int>()
+        coverFilm.add(R.drawable.avatar2)
+        coverFilm.add(R.drawable.samson)
+        coverFilm.add(R.drawable.thenun)
+        coverFilm.add(R.drawable.victorcrowley)
+        coverFilm.add(R.drawable.blackwater)
+        coverFilm.add(R.drawable.tombraider)
+        coverFilm.add(R.drawable.annihilation)
+        coverFilm.add(R.drawable.blackpanther)
+        coverFilm.add(R.drawable.showmustgoon)
+        coverFilm.add(R.drawable.beautyandthebeast)
+        val filmNames = ArrayList<String>()
+        filmNames.add("Avatar2")
+        filmNames.add("Samson")
+        filmNames.add("The Nun")
+        filmNames.add("Victor Crowley")
+        filmNames.add("Black Water")
+        filmNames.add("Tombraider")
+        filmNames.add("Annihilation")
+        filmNames.add("Black Panther")
+        filmNames.add("Go On")
+        filmNames.add("Beaty")
         // set up the RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.rvAnimals)
         val horizontalLayoutManagaer = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = horizontalLayoutManagaer
-        adapter = MyRecyclerViewAdapter(this.context, viewColoers, animalNames)
+        adapter = MyRecyclerViewAdapter(this.context, coverFilm, filmNames)
         recyclerView.adapter = adapter
 
         val args = arguments
-        titleTextView.text = args.getString("title")
+        //titleTextView.text = args.getString("title")
+
+        var item: List<String> = arrayListOf("One", "Two", "Three", "Four", "Five", "Six", "Seven",
+                "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen")
 
 
         //partie liste des salles
-        for (i: Int in 0..itemname.size-1) {
-            val adapter = ListeSalleAdapter(context as Activity, itemname)
-            var list: ListView = view.findViewById<ListView>(R.id.list)
-            list.adapter = adapter
-            //************
-        }
 
+        val adapter = ListeSalleAdapter(context as Activity, item)
+        var list: RecyclerView = view.findViewById<RecyclerView>(R.id.list)
+        list.adapter = adapter
+        //************
 
         return view
     }

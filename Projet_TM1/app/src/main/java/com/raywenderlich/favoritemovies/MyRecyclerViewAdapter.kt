@@ -26,7 +26,6 @@ class MyRecyclerViewAdapter// data is passed into the constructor
         this.mViewColors = colors
         this.mAnimals = animals
     }
-
     // inflates the row layout from xml when needed
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = mInflater.inflate(R.layout.recyclerview_item, parent, false)
