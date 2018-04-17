@@ -62,7 +62,6 @@ class MovieFragment : Fragment() {
     viewColoers.add(R.drawable.droid_runner)
     viewColoers.add(R.drawable.lego)
     viewColoers.add(R.drawable.wonder_droid)
-
     val animalNames = ArrayList<String>()
     animalNames.add("Horse")
     animalNames.add("Cow")
@@ -114,5 +113,4 @@ class MovieFragment : Fragment() {
       return fragment
     }
   }
-
 }

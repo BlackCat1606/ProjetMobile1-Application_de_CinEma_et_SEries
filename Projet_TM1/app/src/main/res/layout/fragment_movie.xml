@@ -8,13 +8,10 @@
     android:paddingRight="@dimen/vertical_padding"
     android:paddingTop="@dimen/horizontal_padding">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-
         <TextView
             android:id="@+id/rf"
             android:layout_width="match_parent"
@@ -22,7 +19,6 @@
             android:text="Rechercher Film:"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/title_text_size" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
