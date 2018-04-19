@@ -32,6 +32,7 @@ package com.raywenderlich.favoritemovies
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -51,6 +52,7 @@ import kotlinx.android.synthetic.*
 class MovieFragment : Fragment() {
     var itemname = arrayOf("Salle01", "Salle02", "Salle03", "Salle04", "Salle05", "Salle06")
     private var adapter: MyRecyclerViewAdapter? = null
+    private var adapter2: ListeSalleAdapter? = null
 
     @SuppressLint("ResourceAsColor")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
@@ -87,22 +89,25 @@ class MovieFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.rvAnimals)
         val horizontalLayoutManagaer = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = horizontalLayoutManagaer
-        adapter = MyRecyclerViewAdapter(this.context, coverFilm, filmNames)
+        adapter = MyRecyclerViewAdapter(this.context as Context, coverFilm, filmNames)
         recyclerView.adapter = adapter
 
-        val args = arguments
+        //val args = arguments
         //titleTextView.text = args.getString("title")
 
         var item: List<String> = arrayListOf("One", "Two", "Three", "Four", "Five", "Six", "Seven",
                 "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen")
 
+        val recyclerView2: RecyclerView = view.findViewById(R.id.list)
+        val horizontalLayoutManagaer2 = LinearLayoutManager(this.context)
+        recyclerView2.layoutManager = horizontalLayoutManagaer2
+        adapter2 = ListeSalleAdapter(this.context as Context)
+        recyclerView2.adapter = adapter2
 
-        //partie liste des salles
+        val args = arguments
 
-        val adapter = ListeSalleAdapter(context as Activity, item)
-        var list: RecyclerView = view.findViewById<RecyclerView>(R.id.list)
-        list.adapter = adapter
-        //************
+
+
 
         return view
     }

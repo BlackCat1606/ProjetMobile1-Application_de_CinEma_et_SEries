@@ -8,4 +8,7 @@
   <dimen name="horizontal_margin">16dp</dimen>
   <dimen name="vertical_margin">16dp</dimen>
   <dimen name="tabs_height">48dp</dimen>
+
+
+
 </resources>

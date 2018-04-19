@@ -1,12 +1,14 @@
 package com.raywenderlich.favoritemovies
 
 import android.content.Context
+import android.content.Intent
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import java.util.*
 
 
@@ -58,6 +60,9 @@ class MyRecyclerViewAdapter// data is passed into the constructor
 
         override fun onClick(view: View) {
             if (mClickListener != null) mClickListener!!.onItemClick(view, adapterPosition)
+            //view.context.startActivity(Intent(this@DrawerActivity, activity.java))
+
+
         }
     }
 

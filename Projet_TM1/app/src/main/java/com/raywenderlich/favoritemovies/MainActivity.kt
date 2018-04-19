@@ -31,57 +31,131 @@
 package com.raywenderlich.favoritemovies
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
-import android.view.View
-import com.nshmura.recyclertablayout.RecyclerTabLayout
-import android.view.ViewGroup
-import android.view.ViewParent
-import android.view.Window
-import android.content.Context.LAYOUT_INFLATER_SERVICE
+import android.support.design.widget.TabLayout
 import android.view.LayoutInflater
-
-
-
-
-
-
+import android.widget.ImageView
+import android.widget.Toast
+import co.zsmb.materialdrawerkt.builders.drawer
+import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
+import android.webkit.WebView
+import android.widget.LinearLayout
+import co.zsmb.materialdrawerkt.builders.accountHeader
+import co.zsmb.materialdrawerkt.draweritems.profile.profile
+import co.zsmb.materialdrawerkt.draweritems.sectionHeader
+import com.mikepenz.google_material_typeface_library.GoogleMaterial
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic
+import com.mikepenz.materialdrawer.Drawer
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager
     private lateinit var pagerAdapter: MoviesPagerAdapter
-    private lateinit var recyclerTabLayout: RecyclerTabLayout
+    //private lateinit var recyclerTabLayout: TabLayout
+    private lateinit  var imageProfile:ImageView
+    private var mwebView: WebView? = null
+    private lateinit var result: Drawer
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        /*val actionBar = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(false)
-        actionBar?.setDisplayShowCustomEnabled(true)
-        actionBar?.setDisplayShowTitleEnabled(false)
-        actionBar?.setIcon(R.mipmap.ic_launcher)
-        val inflator = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val v = inflator.inflate(R.layout.search, null)
-        actionBar?.setCustomView(v)*/
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
+        toolbar.setTitle("")
+        toolbar.setSubtitle("")
+
+
+        result = drawer {
+            toolbar = this@MainActivity.toolbar
+            hasStableIds = true
+            savedInstance = savedInstanceState
+            showOnFirstLaunch = true
+
+            accountHeader {
+                background = R.drawable.header
+                savedInstance = savedInstanceState
+                translucentStatusBar = true
+
+                profile("MOHAMADI Yassine", "em_mohamadi@esi.dz") {
+                    iconUrl = "https://avatars3.githubusercontent.com/u/1476232?v=3&s=460"
+                    identifier = 100
+                }
+
+            }
+
+            sectionHeader("Films et Séries") {
+                divider = false
+            }
+
+            primaryItem("Mes Films") {
+                iicon = GoogleMaterial.Icon.gmd_movie
+                //onClick(openActivity(DrawerItemTypesActivity::class))
+            }
+            primaryItem("Mes Séries") {
+                iicon = MaterialDesignIconic.Icon.gmi_live_tv
+                //onClick(openActivity(AccountHeaderActivity::class))
+            }
+            primaryItem("Mes Feuilletons") {
+                iicon = GoogleMaterial.Icon.gmd_slideshow
+                //onClick(openActivity(HeaderFooterActivity::class))
+            }
+            primaryItem("Déconnexion") {
+                iicon = MaterialDesignIconic.Icon.gmi_power_off
+                //onClick(openActivity(ListenersActivity::class))
+            }
+        }
 
         // Get the list of movies from the JSON file
-        val movies = arrayListOf("Acceuil", "Cinéma", "Série", "Personne", "Commentaires", "Fan")
-
+        val movies = arrayListOf("Acceuil", "Cinéma", "Série","Map")//, //"Personne", "Commentaires", "Fan")
         viewPager = findViewById(R.id.viewPager)
-
         pagerAdapter = MoviesPagerAdapter(supportFragmentManager, movies)
         viewPager.adapter = pagerAdapter
-        recyclerTabLayout = findViewById(R.id.recyclerTabLayout)
-        recyclerTabLayout.setBackgroundColor(11)
-        recyclerTabLayout.setUpWithViewPager(viewPager)
+        /*recyclerTabLayout = findViewById(R.id.recyclerTabLayout)
+        //recyclerTabLayout.setBackgroundColor(11)
+        recyclerTabLayout.setUpWithViewPager(viewPager)*/
+        val tabLayout = findViewById<TabLayout>(R.id.recyclerTabLayout)
+        tabLayout.setupWithViewPager(viewPager);
+
+        val headerView = (getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+                .inflate(R.layout.custom_tab, null, false)
+
+        var linearLayoutOne:LinearLayout =  headerView.findViewById<LinearLayout>(R.id.ll)
+        var linearLayout2:LinearLayout  =  headerView.findViewById(R.id.ll2)
+        var linearLayout3:LinearLayout  = headerView.findViewById(R.id.ll3)
+        var linearLayout4:LinearLayout  = headerView.findViewById(R.id.ll4)
+
+        tabLayout.getTabAt(0)?.setCustomView(linearLayoutOne)
+        tabLayout.getTabAt(1)?.setCustomView(linearLayout2)
+        tabLayout.getTabAt(2)?.setCustomView(linearLayout3)
+        tabLayout.getTabAt(3)?.setCustomView(linearLayout4)
+
+        /*tabLayout.getTabAt(0)?.setIcon(R.drawable.acceuilicon)
+        tabLayout.getTabAt(0)?.setText("")
+        tabLayout.getTabAt(1)?.setIcon(R.drawable.cinemaicon)
+        tabLayout.getTabAt(1)?.setText("")
+        tabLayout.getTabAt(2)?.setIcon(R.drawable.serieicon)
+        tabLayout.getTabAt(2)?.setText("")*/
+
         viewPager.currentItem = 0
 
+
+        this.imageProfile = findViewById<ImageView>(R.id.profile)
+        imageProfile.setOnClickListener {
+            Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show()
+            result.openDrawer()
+        }
+
+    }
+
+    override  fun onBackPressed() {
+        if (result.isDrawerOpen)
+            result.closeDrawer()
+        else
+            super.onBackPressed()
     }
 }

@@ -2,44 +2,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     android:paddingBottom="@dimen/horizontal_padding"
     android:paddingLeft="@dimen/vertical_padding"
     android:paddingRight="@dimen/vertical_padding"
-    android:paddingTop="@dimen/horizontal_padding"
-    android:background="@color/black">
+    android:paddingTop="@dimen/horizontal_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--<TextView
-            android:id="@+id/titleTextView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/title_text_size" />-->
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La Liste des Films:"
+                android:layout_gravity="center"
+                android:textColor="@color/md_white_1000"
+                android:textSize="13pt" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvAnimals"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="La Liste des Salles:"
+            android:layout_gravity="center"
+            android:textColor="@color/md_white_1000"
+            android:textSize="13pt" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
