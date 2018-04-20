@@ -30,18 +30,22 @@
 
 package com.raywenderlich.favoritemovies
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.design.widget.TabLayout
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import co.zsmb.materialdrawerkt.builders.drawer
 import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
 import android.webkit.WebView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import co.zsmb.materialdrawerkt.builders.accountHeader
 import co.zsmb.materialdrawerkt.draweritems.profile.profile
 import co.zsmb.materialdrawerkt.draweritems.sectionHeader
@@ -49,6 +53,7 @@ import com.mikepenz.google_material_typeface_library.GoogleMaterial
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic
 import com.mikepenz.materialdrawer.Drawer
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.reflect.KClass
 
 
 class MainActivity : AppCompatActivity() {
@@ -77,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             showOnFirstLaunch = true
 
             accountHeader {
-                background = R.drawable.header
+                background = R.drawable.htwo
                 savedInstance = savedInstanceState
                 translucentStatusBar = true
 
@@ -94,26 +99,31 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Mes Films") {
                 iicon = GoogleMaterial.Icon.gmd_movie
-                //onClick(openActivity(DrawerItemTypesActivity::class))
+                onClick(openActivity(MesFilms::class))
             }
             primaryItem("Mes Séries") {
                 iicon = MaterialDesignIconic.Icon.gmi_live_tv
                 //onClick(openActivity(AccountHeaderActivity::class))
             }
-            primaryItem("Mes Feuilletons") {
-                iicon = GoogleMaterial.Icon.gmd_slideshow
+            primaryItem("Mes Salles") {
+                iicon = GoogleMaterial.Icon.gmd_room
                 //onClick(openActivity(HeaderFooterActivity::class))
             }
+            primaryItem("Paramètres du compte") {
+                iicon = GoogleMaterial.Icon.gmd_settings
+                //onClick(openActivity(HeaderFooterActivity::class))
+            }
+
             primaryItem("Déconnexion") {
                 iicon = MaterialDesignIconic.Icon.gmi_power_off
-                //onClick(openActivity(ListenersActivity::class))
+                onClick(openActivity(LogIn::class))
             }
         }
 
         // Get the list of movies from the JSON file
         val movies = arrayListOf("Acceuil", "Cinéma", "Série","Map")//, //"Personne", "Commentaires", "Fan")
         viewPager = findViewById(R.id.viewPager)
-        pagerAdapter = MoviesPagerAdapter(supportFragmentManager, movies)
+        pagerAdapter = MoviesPagerAdapter(supportFragmentManager, movies,this)
         viewPager.adapter = pagerAdapter
         /*recyclerTabLayout = findViewById(R.id.recyclerTabLayout)
         //recyclerTabLayout.setBackgroundColor(11)
@@ -150,6 +160,11 @@ class MainActivity : AppCompatActivity() {
             result.openDrawer()
         }
 
+
+    }
+    private fun <T : Activity> openActivity(activity: KClass<T>): (View?) -> Boolean = {
+        startActivity(Intent(this@MainActivity, activity.java))
+        false
     }
 
     override  fun onBackPressed() {

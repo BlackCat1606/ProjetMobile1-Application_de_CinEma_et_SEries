@@ -30,35 +30,45 @@
 
 package com.raywenderlich.favoritemovies
 
+import android.app.Activity
 import android.graphics.Color
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 
 //private const val MAX_VALUE = 200
 
 // 1
-class MoviesPagerAdapter(fragmentManager: FragmentManager, private val movies: ArrayList<String>) :
-    FragmentStatePagerAdapter(fragmentManager) {
-  // 2
-  override fun getItem(position: Int): Fragment {
-    if(position == 1) {
-      return MovieFragment.newInstance(movies[position /*% movies.size*/])
+class MoviesPagerAdapter(fragmentManager: FragmentManager, private val movies: ArrayList<String>,private var a:FragmentActivity) :
+        FragmentStatePagerAdapter(fragmentManager) {
+    // 2
+    override fun getItem(position: Int): Fragment {
+        if (position == 0) {
+            Log.d("0", "khra" + position)
+            return AcceuilFragment.newInstance(movies[position])
+        }
+        if (position == 1) {
+            Log.d("1", "khra" + position)
+            return MovieFragment.newInstance(movies[position /*% movies.size*/])
+        }
+        if (position==2){
+            return  SerieFragment.newInstance(movies[position])
+        }else {
+            Log.d("4", "khra" + position)
+            return MapFragment.newInstance(movies[position],this.a)
+        }
     }
-    else
-    {
-      return AcceuilFragment.newInstance(movies[position /*% movies.size*/])
+
+    // 3
+    override fun getCount(): Int {
+        return movies.size //* MAX_VALUE
     }
-  }
 
-  // 3
-  override fun getCount(): Int {
-    return movies.size //* MAX_VALUE
-  }
-
-  override fun getPageTitle(position: Int): CharSequence {
-    return movies[position /*% movies.size*/]
-  }
+    override fun getPageTitle(position: Int): CharSequence {
+        return movies[position /*% movies.size*/]
+    }
 }

@@ -13,6 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <SearchView
+            android:background="@drawable/custom_border_layaout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:focusable="true"
+            android:layout_height="wrap_content"
+            android:queryHint="Rechercher un film ..."
+            android:id="@+id/searchFilm">
+
+        </SearchView>
 
         <LinearLayout
             android:layout_width="match_parent"
