@@ -117,8 +117,8 @@ public class CinemaActivity : AppCompatActivity() {
                     startActivity(intent4)
                 }
 
-                R.id.navigation_films-> {
-                    val intent1 = Intent(this@CinemaActivity, MoviesActivity::class.java)
+                R.id.navigation_favoris-> {
+                    val intent1 = Intent(this@CinemaActivity, FavoritesActivity::class.java)
                     startActivity(intent1)
 
 

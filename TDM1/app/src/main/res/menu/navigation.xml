@@ -22,8 +22,8 @@
         android:title="@string/title_séries" />
 
     <item
-        android:id="@+id/navigation_films"
-        android:icon="@drawable/ic_movies"
-        android:title="@string/title_films" />
+        android:id="@+id/navigation_favoris"
+        android:icon="@drawable/ic_fav"
+        android:title="@string/title_favorites" />
 
 </menu>

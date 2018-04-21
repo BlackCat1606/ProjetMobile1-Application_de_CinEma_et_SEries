@@ -208,8 +208,8 @@ class PersonnesActivity : AppCompatActivity() {
                     startActivity(intent3)
                 }
 
-                R.id.navigation_films-> {
-                    val intent4 = Intent(this@PersonnesActivity, MoviesActivity::class.java)
+                R.id.navigation_favoris-> {
+                    val intent4 = Intent(this@PersonnesActivity, FavoritesActivity::class.java)
                     startActivity(intent4)
 
                 }

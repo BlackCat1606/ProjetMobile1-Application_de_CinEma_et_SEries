@@ -132,8 +132,8 @@ public class HomeActivity : AppCompatActivity() {
                     startActivity(intent3)
                 }
 
-                R.id.navigation_films-> {
-                    val intent4 = Intent(this@HomeActivity, MoviesActivity::class.java)
+                R.id.navigation_favoris-> {
+                    val intent4 = Intent(this@HomeActivity, FavoritesActivity::class.java)
                     startActivity(intent4)
 
                 }

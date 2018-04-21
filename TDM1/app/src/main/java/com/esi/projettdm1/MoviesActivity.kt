@@ -62,52 +62,6 @@ class MoviesActivity() :AppCompatActivity() {
 
         Picasso.with(applicationContext).load(movieList[0].posterPath).into(backdropIV)
 
-        var bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation) as BottomNavigationView
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
-        var menu:Menu = bottomNavigationView.menu
-        var menuItem :MenuItem = menu.getItem(4)
-        menuItem.setChecked(true)
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            /*        bottomNavigationView.postDelayed({
-                        val itemId = item.itemId
-                        if (itemId == R.id.navigation_home) {
-                            startActivity(Intent(this, HomeActivity::class.java))
-                        }
-                        finish()
-                    }, 300)*/
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    val intent2 = Intent(this@MoviesActivity, HomeActivity::class.java)
-                    startActivity(intent2)
-                }
-
-                R.id.navigation_cinema-> {
-                    val intent1 = Intent(this@MoviesActivity, CinemaActivity::class.java)
-                    startActivity(intent1)
-                }
-
-                R.id.navigation_personnes -> {
-                    val intent3 = Intent(this@MoviesActivity, PersonnesActivity::class.java)
-                    startActivity(intent3)
-
-                }
-
-                R.id.navigation_series-> {
-
-                    val intent4 = Intent(this@MoviesActivity, SeriesActivity::class.java)
-                    startActivity(intent4)
-                }
-
-                R.id.navigation_films-> {
-
-
-                }
-
-            }
-
-
-            false
-        }
 
     /*    var bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavViewBar) as BottomNavigationView
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)

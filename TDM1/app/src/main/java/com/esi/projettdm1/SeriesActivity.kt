@@ -96,7 +96,7 @@ class SeriesActivity() :AppCompatActivity() {
 
                 }
 
-                R.id.navigation_films-> {
+                R.id.navigation_favoris-> {
                     val intent4 = Intent(this@SeriesActivity, MoviesActivity::class.java)
                     startActivity(intent4)
 

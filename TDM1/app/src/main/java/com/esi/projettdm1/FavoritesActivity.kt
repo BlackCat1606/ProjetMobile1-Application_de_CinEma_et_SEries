@@ -62,7 +62,7 @@ public class FavoritesActivity : AppCompatActivity() {
         supportActionBar!!.hide()
 
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        setContentView(R.layout.activity_cinema)
+        setContentView(R.layout.activity_favorites)
         init()
         regularFontChanger.replaceFonts(this.findViewById<View>(android.R.id.content) as ViewGroup)
         for (i in 0 until GlobalData.movies.size) {
@@ -101,7 +101,52 @@ public class FavoritesActivity : AppCompatActivity() {
 
         Picasso.with(applicationContext).load(movieList[0].posterPath).into(backdropIV)
 
+        var bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation) as BottomNavigationView
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
+        var menu:Menu = bottomNavigationView.menu
+        var menuItem :MenuItem = menu.getItem(4)
+        menuItem.setChecked(true)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            /*        bottomNavigationView.postDelayed({
+                        val itemId = item.itemId
+                        if (itemId == R.id.navigation_home) {
+                            startActivity(Intent(this, HomeActivity::class.java))
+                        }
+                        finish()
+                    }, 300)*/
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    val intent1 = Intent(this@FavoritesActivity, HomeActivity::class.java)
+                    startActivity(intent1)
+                }
 
+
+                R.id.navigation_cinema-> {
+                    val intent1 = Intent(this@FavoritesActivity, CinemaActivity::class.java)
+                    startActivity(intent1)
+                }
+
+                R.id.navigation_personnes -> {
+                    val intent2 = Intent(this@FavoritesActivity, PersonnesActivity::class.java)
+                    startActivity(intent2)
+                }
+
+                R.id.navigation_series-> {
+
+                    val intent3 = Intent(this@FavoritesActivity, SeriesActivity::class.java)
+                    startActivity(intent3)
+                }
+
+                R.id.navigation_favoris-> {
+
+
+                }
+
+            }
+
+
+            false
+        }
 
     }
 
@@ -165,10 +210,9 @@ public class FavoritesActivity : AppCompatActivity() {
         /////////////////////////////////////////////////////////////
         serieAdapter = SimilarSeriesAdapter(serieList, this@FavoritesActivity)
         ///////////////////////////////////////////////////////////////
-        layoutManagerSeries = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        layoutManagerSeries = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         ///////////////////////////////////////////
-        //  snapHelperSeries = PagerSnapHelper()
-        //    snapHelperSeries.attachToRecyclerView(seriesRV)
+
         ///////////////////////////////////////////
         seriesRV.layoutManager = layoutManagerSeries
         ////////////////////////////////////////////
