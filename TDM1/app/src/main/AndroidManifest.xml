@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.esi.projettdm1">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- The API key for Google Maps-based APIs. -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBxcqjb0SD0dHnpCHZQMEw31OHFgDhEMZA" />
+
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AcceuilActivity" />
+        <activity android:name=".MoviesActivity"/>
+        <activity android:name=".SeriesActivity"/>
+        <activity android:name=".PersonnesActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".MovieDetailsActivity" />
+        <activity android:name=".CastDetailsActivity" />
+        <activity android:name=".EpisodeDetailsActivity" />
+        <activity android:name=".SeasonDetailsActivity" />
+        <activity android:name=".MovieTimeTestActivity" />
+        <activity android:name=".SerieTimeTestActivity" />
+        <activity android:name=".SeriesSeatSelectionActivity" />
+        <activity android:name=".SerieDetailsActivity" />
+        <activity android:name=".SeatSelectionActivity" />
+        <activity android:name=".CinemaActivity" />
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".SalleDetailsActivity" />
+        <activity android:name=".CrewDetailsActivity"/>
+        <activity android:name=".CommentsActivity"></activity>
+        <activity android:name=".LogIn" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".Map" />
+    </application>
+
+</manifest>

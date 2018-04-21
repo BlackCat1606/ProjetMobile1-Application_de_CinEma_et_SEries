@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_house"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_cinema"
+        android:icon="@drawable/ic_cinema"
+        android:title="@string/title_cinema" />
+
+    <item
+        android:id="@+id/navigation_personnes"
+        android:icon="@drawable/ic_person"
+        android:title="@string/title_peronnes" />
+
+    <item
+        android:id="@+id/navigation_series"
+        android:icon="@drawable/ic_series"
+        android:title="@string/title_séries" />
+
+    <item
+        android:id="@+id/navigation_films"
+        android:icon="@drawable/ic_movies"
+        android:title="@string/title_films" />
+
+</menu>

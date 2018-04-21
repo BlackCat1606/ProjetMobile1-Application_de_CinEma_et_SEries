@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/container"
+    android:layout_height="match_parent"
+    tools:context="com.esi.projettdm1.FavoritesActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/backdropIV"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_white_percent_80"/>
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        style="@style/MaterialSearchBarLight"
+        app:mt_speechMode="true"
+        app:mt_placeholder="Search Favoris"
+        android:background="@color/transparent_white_percent_5"
+        app:mt_hint="Your Favourites"
+        app:mt_maxSuggestionsCount="10"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/searchBar" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/searchBar"
+        >
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textSerie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:gravity="left"
+                    android:maxLines="2"
+                    android:text="Séries Favorites:"
+                    android:textSize="20sp" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/seriesRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_below="@id/textMoviesCinema"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical"
+                    android:tag="CastRV"></android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/textMoviesCinema"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:gravity="left"
+                    android:maxLines="2"
+                    android:text="Films Favoris:"
+                    android:textSize="20sp" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/moviesRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_below="@id/textMoviesCinema"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical"
+                    android:tag="CastRV"></android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/textSalles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:gravity="left"
+                    android:layout_below="@id/moviesRV"
+                    android:maxLines="2"
+                    android:text="Salles :"
+                    android:textSize="20sp" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/sallesRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical"
+                    android:tag="CREWRV"></android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include
+            layout="@layout/element_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+</RelativeLayout>
